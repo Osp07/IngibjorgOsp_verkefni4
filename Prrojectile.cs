@@ -6,25 +6,28 @@ using UnityEngine.InputSystem;
 public class Prrojectile : MonoBehaviour
 {
     Rigidbody2D rigidbody2d;
+    // skilgreinum rigidbody componentið
 
     // Start is called before the first frame update
     void Awake()
     {
         rigidbody2d = GetComponent<Rigidbody2D>();
+        // sækjum tilvísun í rigidbody componentið
     }
 
     void Update()
     {
         if(transform.position.magnitude > 100.0f)
-       {
+        {
            Destroy(gameObject);
            // ef að skotið er komið langt út af fyrir heimin er því eytt
-       }
+        }
     }
 
     public void Launch (Vector2 direction, float force)
     {
         rigidbody2d.AddForce(direction * force);
+        // skjótum skotinu áfram á í þá átt sem leikmaður er á þeim hraða sem við settum fyrir
     }
 
     void OnTriggerEnter2D (Collider2D other)
